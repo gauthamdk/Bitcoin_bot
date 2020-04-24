@@ -17,13 +17,23 @@ class BitcoinBot:
         sleep(2)
 
     def get_latest_x(self):
+
         current = self.driver.find_element_by_xpath('//*[@id="root"]/div/div/div[4]/div/div[1]/div[1]/div[1]/div/div[3]/table/tbody/tr/td[1]/a').text
-        print(current)
+        
+        self.write_to_file(current[:-1])
         while current == self.driver.find_element_by_xpath('//*[@id="root"]/div/div/div[4]/div/div[1]/div[1]/div[1]/div/div[3]/table/tbody/tr/td[1]/a').text:
             pass
         
         self.get_latest_x()
         
+    def write_to_file(self, value):
+        data_file = open("data.txt","a+")
+        data_file.write(value)
+        data_file.write('\n')
+        data_file.close()
+
+
+
 myBot = BitcoinBot('GOATKING2020', pw)
 
 myBot.get_latest_x()
