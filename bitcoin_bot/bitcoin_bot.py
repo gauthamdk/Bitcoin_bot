@@ -37,5 +37,3 @@ class BitcoinBot:
 myBot = BitcoinBot('GOATKING2020', pw)
 
 myBot.get_latest_x()
-
-print('hey')
