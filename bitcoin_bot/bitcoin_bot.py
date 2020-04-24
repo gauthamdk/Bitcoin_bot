@@ -16,7 +16,14 @@ class BitcoinBot:
         self.driver.find_element_by_xpath('//*[@id="root"]/div/div[1]/div[2]/a').click()
         sleep(2)
 
-
-
+    def get_latest_x(self):
+        current = self.driver.find_element_by_xpath('//*[@id="root"]/div/div/div[4]/div/div[1]/div[1]/div[1]/div/div[3]/table/tbody/tr/td[1]/a').text
+        print(current)
+        while current == self.driver.find_element_by_xpath('//*[@id="root"]/div/div/div[4]/div/div[1]/div[1]/div[1]/div/div[3]/table/tbody/tr/td[1]/a').text:
+            pass
         
-BitcoinBot('GOATKING2020', pw)
+        self.get_latest_x()
+        
+myBot = BitcoinBot('GOATKING2020', pw)
+
+myBot.get_latest_x()
