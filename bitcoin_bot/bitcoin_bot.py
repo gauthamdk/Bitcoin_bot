@@ -5,6 +5,7 @@ from details import pw
 from time import sleep
 import numpy as np
 import matplotlib.pyplot as plt
+from pylab import rcParams
 
 class BitcoinBot:
 
@@ -35,12 +36,17 @@ class BitcoinBot:
         data_file.close()
 
     def plot_results(self):
+        rcParams['figure.figsize'] = 10, 10
+
         data_file = open("data.txt","r+")
-        values = data_file.read()
-        values = np.array(values)
+        values = np.array(data_file.read().splitlines()).astype(np.float)
+        x = np.array([i for i in range(int(values.shape[0]))])
+        plt.plot(x,values)
+        plt.ylabel("Multiplier bust rates (X)")
+        plt.show()
 
 myBot = BitcoinBot('GOATKING2020', pw)
 
-# myBot.get_latest_x()
+myBot.get_latest_x()
 
 myBot.plot_results()
