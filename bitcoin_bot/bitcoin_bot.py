@@ -3,6 +3,8 @@ from selenium import webdriver
 from details import pw
 
 from time import sleep
+import numpy as np
+import matplotlib.pyplot as plt
 
 class BitcoinBot:
 
@@ -32,8 +34,13 @@ class BitcoinBot:
         data_file.write('\n')
         data_file.close()
 
-
+    def plot_results(self):
+        data_file = open("data.txt","r+")
+        values = data_file.read()
+        values = np.array(values)
 
 myBot = BitcoinBot('GOATKING2020', pw)
 
-myBot.get_latest_x()
+# myBot.get_latest_x()
+
+myBot.plot_results()
